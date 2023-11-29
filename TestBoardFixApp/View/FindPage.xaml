@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:TestBoardFixApp.ViewModel"
+             x:DataType="viewmodel:FindViewModel"
+             x:Class="TestBoardFixApp.View.FindPage">
+    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,100,100">
+        <SearchBar Grid.Row="0" Grid.Column="0"/>
+        <Button Grid.Row="0" Grid.Column="1" Text="搜索"/>
+        <Button Grid.Row="0" Grid.Column="2" Text="高级搜索"/>
+        <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
+            <VerticalStackLayout>
+                <CollectionView>
+                    
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+
+</ContentPage>
