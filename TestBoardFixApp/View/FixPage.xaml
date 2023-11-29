@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:TestBoardFixApp.ViewModel"
+             xmlns:Model="clr-namespace:TestBoardFixApp.Model"
+             x:DataType="viewmodel:FixViewModel"
+             x:Class="TestBoardFixApp.View.FixPage">
+    <ScrollView Margin="20">
+        <VerticalStackLayout >
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                <Label Grid.Row="0" Grid.Column="0" 
+            Text="测试机型号:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Picker Grid.Row="0" Grid.Column="1" Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" SelectedItem="{Binding FixFile.TestMachingType}"  ItemsSource="{x:Static Model:EquipmentData.TestMachineTypeData}">
+                </Picker>
+                <Label Grid.Row="1" Grid.Column="0"
+            Text="测试机编号:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Editor Grid.Row="1" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Text="{Binding FixFile.TestMachingNum}">
+                    <Editor.Behaviors>
+                        <toolkit:CharactersValidationBehavior 
+                            MinimumCharacterTypeCount="1"
+                            MinimumLength="1"/>
+                    </Editor.Behaviors>
+                </Editor>
+
+                <Label Grid.Row="2" Grid.Column="0"
+            Text="板卡名称:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Picker Grid.Row="2" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" SelectedItem="{Binding FixFile.BoardName}" ItemsSource="{x:Static Model:EquipmentData.BoardNameData}"/>
+
+                <Label Grid.Row="3" Grid.Column="0"
+            Text="出厂编号:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Editor Grid.Row="3" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Text="{Binding FixFile.BoardNum}">
+                    <Editor.Behaviors>
+                        <toolkit:CharactersValidationBehavior 
+                            MinimumCharacterTypeCount="1" />
+                    </Editor.Behaviors>
+                </Editor>
+
+                <Label Grid.Row="4" Grid.Column="0"
+            Text="产品信息:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Editor Grid.Row="4" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Text="{Binding FixFile.ProductName}">
+                    <Editor.Behaviors>
+                        <toolkit:CharactersValidationBehavior 
+                            MinimumCharacterTypeCount="1" />
+                    </Editor.Behaviors>
+                </Editor>
+
+                <Label Grid.Row="5" Grid.Column="0"
+            Text="维修方式:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Picker Grid.Row="5" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" SelectedItem="{Binding FixFile.FixWay}" ItemsSource="{x:Static Model:EquipmentData.FixWayData}"/>
+
+                <Label Grid.Row="6" Grid.Column="0"
+            Text="异常现象:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Picker Grid.Row="6" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" 
+                    SelectedItem="{Binding FixFile.Abnormalphenomena}" ItemsSource="{x:Static Model:EquipmentData.AbnormalphenomenaData }"/>
+                <Label Grid.Row="7" Grid.Column="0"
+            Text="异常文件:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Button Grid.Row="7" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Command="{Binding PickAndShowCommand}" Text="选择文件"/>
+                <Image Grid.Row="8" Grid.ColumnSpan="2" 
+                       WidthRequest="200" HeightRequest="100"
+                       Source="{Binding FixFile.AbnormalFile}" BackgroundColor="Aquamarine" Aspect="AspectFill"/>
+
+                <Label Grid.Row="9" Grid.Column="0"
+            Text="异常标签:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Editor Grid.Row="9" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Text="{Binding FixFile.AbnormalString}">
+                    <Editor.Behaviors>
+                        <toolkit:CharactersValidationBehavior 
+                            MinimumCharacterTypeCount="1" />
+                    </Editor.Behaviors>
+                </Editor>
+
+                <Label Grid.Row="10" Grid.Column="0"
+            Text="异常备注:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Editor Grid.Row="10" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Text="{Binding FixFile.Other}">
+                    <Editor.Behaviors>
+                        <toolkit:CharactersValidationBehavior 
+                            MinimumCharacterTypeCount="1" />
+                    </Editor.Behaviors>
+                </Editor>
+
+                <Label Grid.Row="11" Grid.Column="0"
+                Text="报修日期:"
+                VerticalOptions="Center" HorizontalOptions="End"/>
+                <DatePicker Grid.Row="11" Grid.Column="1"  Margin="8"
+                VerticalOptions="Center" Date="{Binding FixFile.StartFixDate}"/>
+            </Grid>
+            <Button WidthRequest="200" VerticalOptions="Center"  Text="检查" Command="{Binding CanSaveChickCommand}"></Button>
+            <Button Grid.Row="12" Grid.ColumnSpan="2"  Margin="8" Text="保存" 
+                    WidthRequest="200" VerticalOptions="Center" 
+                    Command="{Binding SaveFixCommand}" Clicked="Button_ClickedAsync" IsEnabled="{Binding CanSave}">
+            </Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TestBoardFixApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TestBoardFixApp"
+    xmlns:view="clr-namespace:TestBoardFixApp.View"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <ShellContent
+        Title="主页"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage"
+        Shell.NavBarIsVisible="true" />
+        <ShellContent
+        Title="板卡报修"
+        ContentTemplate="{DataTemplate view:FixPage}"
+        Route="FixPage"
+        Shell.NavBarIsVisible="true" />
+        <ShellContent
+        Title="维修后信息"
+        ContentTemplate="{DataTemplate view:FixedPage}"
+        Route="FixedPage" 
+        Shell.NavBarIsVisible="true" />
+        <ShellContent
+        Title="维修记录"
+        ContentTemplate="{DataTemplate view:FindPage}"
+        Route="FindPage" 
+        Shell.NavBarIsVisible="true" />
+    </TabBar>
+
+
+</Shell>

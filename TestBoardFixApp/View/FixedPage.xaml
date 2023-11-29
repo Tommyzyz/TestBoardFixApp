@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:TestBoardFixApp.ViewModel"
+             x:DataType="viewmodel:FixedViewModel"
+             x:Class="TestBoardFixApp.View.FixedPage">
+    <ScrollView Margin="20">
+        <VerticalStackLayout >
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <Label Grid.Row="0" Grid.Column="0"
+            Text="检测方法:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Editor Grid.Row="0" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Text="{Binding FixedFile.TestingMethod }">
+                    <Editor.Behaviors>
+                        <toolkit:CharactersValidationBehavior 
+                            MinimumCharacterTypeCount="1" />
+                    </Editor.Behaviors>
+                </Editor>
+
+            <Label Grid.Row="1" Grid.Column="0"
+            Text="维修方案:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Editor Grid.Row="1" Grid.Column="1"  Margin="8" 
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Text="{Binding FixedFile.FixdMethod }">
+                    <Editor.Behaviors>
+                        <toolkit:CharactersValidationBehavior 
+                            MinimumCharacterTypeCount="1" />
+                    </Editor.Behaviors>
+                </Editor>
+
+                <Label Grid.Row="2" Grid.Column="0"
+                Text="维修日期:"
+                VerticalOptions="Center" HorizontalOptions="End"/>
+                <DatePicker Grid.Row="2" Grid.Column="1"  Margin="8"
+                VerticalOptions="Center" Date="{Binding FixedFile.EndFixDate }"/>
+
+                <Label Grid.Row="3" Grid.Column="0"
+            Text="验收文件:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Button Grid.Row="3" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Command="{Binding PickAndShowCommand}" Text="选择文件"/>
+                <Image Grid.Row="4" Grid.ColumnSpan="2" 
+                       WidthRequest="200" HeightRequest="100"
+                       Source="{Binding FixedFile.FixedFile}" BackgroundColor="Aquamarine" Aspect="AspectFill"/>
+
+
+                <Label Grid.Row="5" Grid.Column="0"
+            Text="验收备注:"
+            VerticalOptions="Center" HorizontalOptions="End"/>
+                <Editor Grid.Row="5" Grid.Column="1"  Margin="8"
+                    VerticalOptions="Center" HorizontalOptions="Start" WidthRequest="120" Text="{Binding  FixedFile.Other2}">
+                    <Editor.Behaviors>
+                        <toolkit:CharactersValidationBehavior 
+                            MinimumCharacterTypeCount="1" />
+                    </Editor.Behaviors>
+                </Editor>
+
+
+            </Grid>
+            <Button WidthRequest="200" VerticalOptions="Center"  Text="检查" Command="{Binding CanSaveChickCommand}"></Button>
+            <Button Grid.Row="6" Grid.ColumnSpan="2"  Margin="8" Text="保存" IsEnabled="{Binding CanSave}"
+                    WidthRequest="200" VerticalOptions="Center" 
+                    Command="{Binding SaveFixedCommand}" Clicked="Button_ClickedAsync">
+            </Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
