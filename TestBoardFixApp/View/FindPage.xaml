@@ -1,36 +1,70 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:TestBoardFixApp.ViewModel"
-             xmlns:model="clr-namespace:TestBoardFixApp.Model"
-             xmlns:app="clr-namespace:TestBoardFixApp"
-             x:DataType="viewmodel:FindViewModel"
-             x:Class="TestBoardFixApp.View.FindPage">
-    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,100,100">
-        <SearchBar Grid.Row="0" Grid.Column="0"/>
-        <Button Grid.Row="0" Grid.Column="1" Text="搜索"/>
+<ContentPage
+    x:Class="TestBoardFixApp.View.FindPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:TestBoardFixApp"
+    xmlns:model="clr-namespace:TestBoardFixApp.Model"
+    xmlns:viewmodel="clr-namespace:TestBoardFixApp.ViewModel"
+    x:DataType="viewmodel:FindViewModel">
+    <Grid ColumnDefinitions="*,100,100" RowDefinitions="Auto,Auto">
+        <SearchBar
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="{Binding SearchString}" />
+        <Button
+            Grid.Row="0"
+            Grid.Column="1"
+            Command="{Binding SearchCommand}"
+            Text="搜索" />
         <!--<Button Grid.Row="0" Grid.Column="2" Text="高级搜索"/>-->
         <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
             <VerticalStackLayout>
-                <CollectionView ItemsSource="{x:Static app:SavedFixFiles.fixFiles }"
-                                SelectionMode="Multiple"
-                                SelectedItems="{Binding SelectedFixFile}">
-                    <CollectionView.ItemTemplate >
+                <CollectionView
+      ItemsSource="{Binding SelectedFixFile}">
+                    <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:FixFileData">
                             <VerticalStackLayout>
                                 <Label>
                                     <Label.Text>
-                                        <MultiBinding StringFormat="{}-{0}-{1}-{2}">
-                                            <Binding  Path="TestMachingType"/>
-                                            <Binding  Path="TestMachingNum"/>
-                                            <Binding  Path="FixWay"/>
-                                            <Binding  Path="ProductName"/>
-                                            <Binding  Path="Abnormalphenomena"/>
-                                            <Binding  Path="AbnormalString"/>
-                                            <Binding  Path="RegisteredPerson"/>
-                                            <Binding  Path="BoardName"/>
-                                            <Binding  Path="BoardNum"/>
-                                            <Binding  Path="StartFixDate"/>
+                                        <MultiBinding StringFormat="{}测试机型号{0}--测试机编号-{1}--修复方式-{2}--产品名称-{3}--异常现象-{4}--异常描述-{5}--登记人员-{6}--板卡名称-{7}--板卡编号-{8}--日期-{9}">
+                                            <Binding Path="TestMachingType" />
+                                            <Binding Path="TestMachingNum" />
+                                            <Binding Path="FixWay" />
+                                            <Binding Path="ProductName" />
+                                            <Binding Path="Abnormalphenomena" />
+                                            <Binding Path="AbnormalString" />
+                                            <Binding Path="RegisteredPerson" />
+                                            <Binding Path="BoardName" />
+                                            <Binding Path="BoardNum" />
+                                            <Binding Path="StartFixDate" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CollectionView
+                    ItemsSource="{x:Static app:SavedFixFiles.fixFiles}"
+                    SelectedItems="{Binding SelectedFixFile}"
+                    SelectionMode="Multiple">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:FixFileData">
+                            <VerticalStackLayout>
+                                <Label>
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}测试机型号{0}--测试机编号-{1}--修复方式-{2}--产品名称-{3}--异常现象-{4}--异常描述-{5}--登记人员-{6}--板卡名称-{7}--板卡编号-{8}--日期-{9}">
+                                            <Binding Path="TestMachingType" />
+                                            <Binding Path="TestMachingNum" />
+                                            <Binding Path="FixWay" />
+                                            <Binding Path="ProductName" />
+                                            <Binding Path="Abnormalphenomena" />
+                                            <Binding Path="AbnormalString" />
+                                            <Binding Path="RegisteredPerson" />
+                                            <Binding Path="BoardName" />
+                                            <Binding Path="BoardNum" />
+                                            <Binding Path="StartFixDate" />
                                         </MultiBinding>
                                     </Label.Text>
                                 </Label>
