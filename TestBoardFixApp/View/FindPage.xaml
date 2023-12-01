@@ -20,8 +20,7 @@
         <!--<Button Grid.Row="0" Grid.Column="2" Text="高级搜索"/>-->
         <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
             <VerticalStackLayout>
-                <CollectionView
-      ItemsSource="{Binding SelectedFixFile}">
+                <CollectionView ItemsSource="{Binding SelectedFixFile}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:FixFileData">
                             <VerticalStackLayout>
@@ -54,7 +53,7 @@
                             <VerticalStackLayout>
                                 <Label>
                                     <Label.Text>
-                                        <MultiBinding StringFormat="{}测试机型号{0}--测试机编号-{1}--修复方式-{2}--产品名称-{3}--异常现象-{4}--异常描述-{5}--登记人员-{6}--板卡名称-{7}--板卡编号-{8}--日期-{9}">
+                                        <MultiBinding StringFormat="{}测试机型号:{0}--测试机编号:{1}--修复方式:{2}--产品名称:{3}--异常现象:{4}--异常描述:{5}--登记人员:{6}--板卡名称:{7}--板卡编号:{8}--日期:{9}">
                                             <Binding Path="TestMachingType" />
                                             <Binding Path="TestMachingNum" />
                                             <Binding Path="FixWay" />
