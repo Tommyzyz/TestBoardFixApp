@@ -10,6 +10,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 
+
 		<!-- Display name -->
 		<ApplicationTitle>TestBoardFixApp</ApplicationTitle>
 

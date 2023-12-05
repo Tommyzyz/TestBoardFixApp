@@ -29,7 +29,7 @@ public class FixFileData
 
     public DateTime StartFixDate { get; set; }
 
-    public string Other {  get; set; }
+    public string? Other {  get; set; }
     
 }
 
@@ -47,7 +47,7 @@ public class FixedFileData
 
     public DateTime EndFixDate { get; set; }
 
-    public string Other2 { get; set; }
+    public string? Other2 { get; set; }
 }
 
 public static class EquipmentData
