@@ -5,3 +5,4 @@ global using TestBoardFixApp.View;
 global using TestBoardFixApp.Model;
 global using CommunityToolkit.Maui;
 global using Syncfusion.XlsIO;
+global using Microsoft.EntityFrameworkCore;

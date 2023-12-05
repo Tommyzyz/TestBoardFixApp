@@ -1,10 +1,16 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+
 namespace TestBoardFixApp.Model;
 
 public class FixFileData
 {
     public bool IsFixed {  get; set; }
 
+
+    [Key]
     public Int64 ID { get; set; }
 
     public string TestMachingType { get; set; }
@@ -17,6 +23,7 @@ public class FixFileData
     
     public string Abnormalphenomena { get; set; }
 
+    [NotMapped]
     public ImageSource AbnormalFile { get; set; }
 
     public string AbnormalString { get; set; }
@@ -27,6 +34,7 @@ public class FixFileData
 
     public string RegisteredPerson { get; set; }
 
+    [DataType(DataType.DateTime)]
     public DateTime StartFixDate { get; set; }
 
     public string? Other {  get; set; }
