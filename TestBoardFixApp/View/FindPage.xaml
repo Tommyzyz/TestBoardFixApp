@@ -20,32 +20,8 @@
         <!--<Button Grid.Row="0" Grid.Column="2" Text="高级搜索"/>-->
         <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
             <VerticalStackLayout>
-                <CollectionView ItemsSource="{Binding SelectedFixFile}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:FixFileData">
-                            <VerticalStackLayout>
-                                <Label>
-                                    <Label.Text>
-                                        <MultiBinding StringFormat="{}测试机型号{0}--测试机编号-{1}--修复方式-{2}--产品名称-{3}--异常现象-{4}--异常描述-{5}--登记人员-{6}--板卡名称-{7}--板卡编号-{8}--日期-{9}">
-                                            <Binding Path="TestMachingType" />
-                                            <Binding Path="TestMachingNum" />
-                                            <Binding Path="FixWay" />
-                                            <Binding Path="ProductName" />
-                                            <Binding Path="Abnormalphenomena" />
-                                            <Binding Path="AbnormalString" />
-                                            <Binding Path="RegisteredPerson" />
-                                            <Binding Path="BoardName" />
-                                            <Binding Path="BoardNum" />
-                                            <Binding Path="StartFixDate" />
-                                        </MultiBinding>
-                                    </Label.Text>
-                                </Label>
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
                 <CollectionView
-                    ItemsSource="{x:Static app:SavedFixFiles.fixFiles}"
+                    ItemsSource="{Binding SearchedFixFile}"
                     SelectedItems="{Binding SelectedFixFile}"
                     SelectionMode="Multiple">
                     <CollectionView.ItemTemplate>

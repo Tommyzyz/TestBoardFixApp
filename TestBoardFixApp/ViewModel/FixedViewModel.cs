@@ -15,7 +15,7 @@ namespace TestBoardFixApp.ViewModel
         [RelayCommand]
         private void SaveFixed()
         {
-            SavedFixFiles.fixedfiles.Add(FixedFile);
+            //SavedFixFiles.fixedfiles.Add(FixedFile);
             FixedFile = new();
         }
 

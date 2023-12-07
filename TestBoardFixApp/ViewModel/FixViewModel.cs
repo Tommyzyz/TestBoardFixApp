@@ -29,10 +29,13 @@ public partial class FixViewModel:ObservableObject
     }
 
     [RelayCommand]
-    private void SaveFix()
+    private async Task SaveFixAsync()
     {
-            SavedFixFiles.fixFiles.Add(FixFile);
-            FixFile = new();
+        using TestDbContext db = new TestDbContext();
+        db.FixFileData.Add(FixFile);
+        await db.SaveChangesAsync();
+
+        FixFile = new();
     }
 
 
