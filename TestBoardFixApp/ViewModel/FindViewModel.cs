@@ -18,18 +18,15 @@ public partial class FindViewModel:ObservableObject
     {
         using TestDbContext db = new TestDbContext();
 
-        SearchedFixFile = db.FixFileData.Where(item => item.TestMachingType.Contains(SearchString)).ToList();
-        //SavedFixFiles.fixFiles.AddRange(db.FixFileData);
-        //foreach (FixFileData data in db.FixFileData) 
-        //{
-        //    // SelectedFixFile.Add(data);
+        SearchedFixFile = db.FixFileData.Where(item => item.TestMachingType.Contains(SearchString)||
+                                                     item.TestMachingNum.Contains(SearchString)||
+                                                     item.RegisteredPerson.Contains(SearchString)||
+                                                     item.Abnormalphenomena.Contains(SearchString)||
+                                                     item.AbnormalString.Contains(SearchString)||
+                                                     item.StartFixDate.ToString().Contains(SearchString)||
+                                                     item.BoardName.Contains(SearchString)||
+                                                     item.BoardNum.Contains(SearchString)||
+                                                     item.ProductName.Contains(SearchString)).ToList();
 
-        //    SavedFixFiles.fixFiles.Add(data);
-        //}
-        //foreach(FixFileData data in SavedFixFiles.fixFiles) 
-        //{
-        //    if (data.ProductName == SearchString || data.TestMachingNum == SearchString || data.TestMachingType == SearchString || data.BoardName == SearchString || data.BoardNum == SearchString)
-        //    SelectedFixFile.Add(data);
-        //}
     }
 }

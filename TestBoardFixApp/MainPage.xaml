@@ -23,7 +23,7 @@
                 HorizontalOptions="Center"
                 SemanticProperties.HeadingLevel="Level1"
                 Text="Hello, World!" />
-            <Button Command="{Binding AddToDatabaseCommand }" Text="加入数据" />
+
 
             <Entry
                 SemanticProperties.Description="请输入账号"

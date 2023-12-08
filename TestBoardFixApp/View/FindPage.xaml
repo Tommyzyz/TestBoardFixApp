@@ -20,10 +20,10 @@
         <!--<Button Grid.Row="0" Grid.Column="2" Text="高级搜索"/>-->
         <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
             <VerticalStackLayout>
-                <CollectionView
-                    ItemsSource="{Binding SearchedFixFile}"
-                    SelectedItems="{Binding SelectedFixFile}"
-                    SelectionMode="Multiple">
+                <CollectionView EmptyView="无数据"
+                    ItemsSource="{Binding SearchedFixFile}">
+                    <!--SelectedItems="{Binding SelectedFixFile}"-->
+                    <!--SelectionMode="Multiple">-->
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:FixFileData">
                             <VerticalStackLayout>
@@ -47,11 +47,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <!--<CollectionView ItemsSource="{x:Static app:SavedFixFiles.fixedfiles }"
-                SelectionMode="Multiple"
-                SelectedItems="{Binding SelectedMonkeys}">
-
-                </CollectionView>-->
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

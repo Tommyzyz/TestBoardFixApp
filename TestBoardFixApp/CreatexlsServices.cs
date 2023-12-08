@@ -6,7 +6,7 @@ namespace TestBoardFixApp;
 
 public static class CreatexlsServices
 {
-    public static async void createExcel()
+    public static async Task createExcel()
     {
         //using (ExcelEngine excelEngine = new ExcelEngine())
         //{
