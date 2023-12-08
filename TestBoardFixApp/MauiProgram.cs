@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui.Storage;
 using Microsoft.Extensions.Logging;
 using TestBoardFixApp.View;
-using Windows.UI.WebUI;
 
 namespace TestBoardFixApp
 {
