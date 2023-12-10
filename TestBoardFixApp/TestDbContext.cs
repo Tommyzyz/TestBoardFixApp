@@ -4,6 +4,7 @@ namespace TestBoardFixApp;
 public class TestDbContext:DbContext
 {
     public DbSet<FixFileData> FixFileData { get; set; }
+    public DbSet<FixedFileData> FixedFileData { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

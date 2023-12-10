@@ -51,8 +51,11 @@ public class FixedFileData
 
     public string FixdMethod { get; set; }
 
+    [NotMapped]
     public ImageSource FixedFile { get; set; }
 
+
+    [DataType(DataType.DateTime)]
     public DateTime EndFixDate { get; set; }
 
     public string? Other2 { get; set; }
