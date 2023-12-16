@@ -6,3 +6,4 @@ global using TestBoardFixApp.Model;
 global using CommunityToolkit.Maui;
 global using Syncfusion.XlsIO;
 global using Microsoft.EntityFrameworkCore;
+global using System.Configuration;

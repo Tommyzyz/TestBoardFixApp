@@ -8,7 +8,7 @@ public class TestDbContext:DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string connStr = "Server=localhost;Port=5432;UserId=postgres;Password=1234;Database=postgres";
+        string connStr = ConfigurationManager.ConnectionStrings["TestDbConnectString"].ToString();
         optionsBuilder.UseNpgsql(connStr);
     }
 
