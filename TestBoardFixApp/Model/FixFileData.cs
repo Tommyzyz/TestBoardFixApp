@@ -43,6 +43,7 @@ public class FixFileData
 
 public class FixedFileData
 {
+    [Key]
     public Int64 ID { get; set; }
 
     public string RegisteredPerson { get; set; }

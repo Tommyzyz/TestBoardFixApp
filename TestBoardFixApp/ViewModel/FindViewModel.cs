@@ -7,18 +7,17 @@ public partial class FindViewModel:ObservableObject
     [ObservableProperty]
     private List<FixFileData> searchedFixFile= new TestDbContext().FixFileData.ToList<FixFileData>();
 
-    [ObservableProperty]
-    private List<FixFileData> selectedFixFile = new();
+    //[ObservableProperty]
+    //private List<FixFileData> selectedFixFile = new();
 
-    [ObservableProperty]
-    private string searchString;
 
     [RelayCommand]
-    private void Search()
+    private void Search(string SearchString)
     {
-        using TestDbContext db = new TestDbContext();
-
-        SearchedFixFile = db.FixFileData.Where(item => item.TestMachingType.Contains(SearchString)||
+        if(SearchString!=null) 
+        {
+            using TestDbContext db = new TestDbContext();
+            SearchedFixFile = db.FixFileData.Where(item => item.TestMachingType.Contains(SearchString)||
                                                      item.TestMachingNum.Contains(SearchString)||
                                                      item.RegisteredPerson.Contains(SearchString)||
                                                      item.Abnormalphenomena.Contains(SearchString)||
@@ -27,6 +26,6 @@ public partial class FindViewModel:ObservableObject
                                                      item.BoardName.Contains(SearchString)||
                                                      item.BoardNum.Contains(SearchString)||
                                                      item.ProductName.Contains(SearchString)).ToList();
-
+        }
     }
 }

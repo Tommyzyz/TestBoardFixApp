@@ -7,17 +7,19 @@
     xmlns:model="clr-namespace:TestBoardFixApp.Model"
     xmlns:viewmodel="clr-namespace:TestBoardFixApp.ViewModel"
     x:DataType="viewmodel:FindViewModel">
-    <Grid ColumnDefinitions="*,100,100" RowDefinitions="Auto,Auto">
+    <Grid ColumnDefinitions="*,100" RowDefinitions="Auto,Auto">
         <SearchBar
+            x:Name="searchBar"
             Grid.Row="0"
             Grid.Column="0"
-            Text="{Binding SearchString}" />
+            SearchCommand="{Binding SearchCommand}"
+            SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
         <Button
             Grid.Row="0"
             Grid.Column="1"
             Command="{Binding SearchCommand}"
-            Text="搜索" />
-        <!--<Button Grid.Row="0" Grid.Column="2" Text="高级搜索"/>-->
+            Text="高级搜索" />
+        <!--<Button Grid.Row="0" Grid.Column="2" Text="高级搜索"/>  Text="{Binding SearchString}" -->
         <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
             <VerticalStackLayout>
                 <CollectionView EmptyView="无数据"

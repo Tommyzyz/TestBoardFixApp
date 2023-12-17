@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace TestBoardFixApp.Model;
 
-public class EntityConfig : IEntityTypeConfiguration<FixFileData>
+public class FixFileConfig : IEntityTypeConfiguration<FixFileData>
 {
     public void Configure(EntityTypeBuilder<FixFileData> builder)
     {
@@ -17,3 +17,13 @@ public class EntityConfig : IEntityTypeConfiguration<FixFileData>
     }
 }
 
+public class FixedFileConfig : IEntityTypeConfiguration<FixedFileData>
+{
+    public void Configure(EntityTypeBuilder<FixedFileData> builder)
+    {
+        builder.ToTable("T_FixedFileData");
+        builder.Property(e => e.RegisteredPerson).IsRequired();
+        builder.Property(e=> e.TestingMethod).IsRequired();
+        builder.Property(e=>e.FixdMethod).IsRequired();
+    }
+}
