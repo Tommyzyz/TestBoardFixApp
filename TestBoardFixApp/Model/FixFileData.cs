@@ -1,8 +1,4 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
-
 namespace TestBoardFixApp.Model;
 
 public class FixFileData
@@ -13,31 +9,33 @@ public class FixFileData
     [Key]
     public Int64 ID { get; set; }
 
-    public string TestMachingType { get; set; }
+    public string TestMachingType { get; set; } = null!;
 
-    public string TestMachingNum { get; set; }
+    public string TestMachingNum { get; set; } = null!;
 
-    public string BoardName { get; set; }
+    public string BoardName { get; set; } = null!;
 
-    public string BoardNum { get; set; }
-    
-    public string Abnormalphenomena { get; set; }
+    public string BoardNum { get; set; } = null!;
+
+    public string Abnormalphenomena { get; set; } = null!;
 
     [NotMapped]
-    public ImageSource AbnormalFile { get; set; }
+    public ImageSource AbnormalFile { get; set; } = null!;
 
-    public string AbnormalString { get; set; }
+    public string AbnormalString { get; set; } = null!;
 
-    public string ProductName {  get; set; }
+    public string ProductName {  get; set; } = null!;
 
-    public string FixWay { get; set; }
+    public string FixWay { get; set; } = null!;
 
-    public string RegisteredPerson { get; set; }
+    public string RegisteredPerson { get; set; } = null!;
 
     [DataType(DataType.DateTime)]
     public DateTime StartFixDate { get; set; }
 
     public string? Other {  get; set; }
+
+    //public FixedFileData? FixedFileData { get; set; }
     
 }
 
@@ -46,20 +44,22 @@ public class FixedFileData
     [Key]
     public Int64 ID { get; set; }
 
-    public string RegisteredPerson { get; set; }
+    public string RegisteredPerson { get; set; } = null!;
 
-    public string TestingMethod { get; set; }
+    public string TestingMethod { get; set; } = null!;
 
-    public string FixdMethod { get; set; }
+    public string FixdMethod { get; set; } = null!;
 
     [NotMapped]
-    public ImageSource FixedFile { get; set; }
+    public ImageSource FixedFile { get; set; } = null!;
 
 
     [DataType(DataType.DateTime)]
     public DateTime EndFixDate { get; set; }
 
     public string? Other2 { get; set; }
+
+    //public FixFileData FixFileData { get; set; }
 }
 
 public static class EquipmentData

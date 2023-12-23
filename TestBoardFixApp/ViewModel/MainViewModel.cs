@@ -1,5 +1,7 @@
 ﻿
 
+using TestBoardFixApp.Data;
+
 namespace TestBoardFixApp.ViewModel;
 
 public partial class MainViewModel:ObservableObject
