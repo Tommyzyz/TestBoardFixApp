@@ -1,69 +1,51 @@
 ﻿
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Storage;
+using System.Data;
+using Newtonsoft.Json;
 
 namespace TestBoardFixApp;
 
 public static class CreatexlsServices
 {
-    public static async Task createExcel()
+    /// <summary>
+    /// 导出Excel
+    /// </summary>
+    /// <param name="table"></param>
+    /// <param name="file"></param>
+    private static void dataTableToCsv(DataTable table, string file)
     {
-        //using (ExcelEngine excelEngine = new ExcelEngine())
-        //{
-        //    Syncfusion.XlsIO.IApplication application = excelEngine.Excel;
-        //    application.DefaultVersion = ExcelVersion.Xlsx;
+        string title = "";
+        FileStream fs = new FileStream(file, FileMode.OpenOrCreate);
+        StreamWriter sw = new StreamWriter(new BufferedStream(fs), System.Text.Encoding.Default);
+        for (int i = 0; i < table.Columns.Count; i++)
+        {
+            title += table.Columns[i].ColumnName + "\t"; //栏位：自动跳到下一单元格
+        }
+        title = title.Substring(0, title.Length - 1) + "\n";
+        sw.Write(title);
+        foreach (DataRow row in table.Rows)
+        {
+            string line = "";
+            for (int i = 0; i < table.Columns.Count; i++)
+            {
+                line += row[i].ToString().Trim() + "\t"; //内容：自动跳到下一单元格
+            }
+            line = line.Substring(0, line.Length - 1) + "\n";
+            sw.Write(line);
+        }
+        sw.Close();
+        fs.Close();
+    }
 
-        //    IWorkbook workbook = application.Workbooks.Create(1);
-        //    IWorksheet worksheet = workbook.Worksheets[0];
-        //    int i = 1;
-        //    // 添加文本、图片、样式等到工作表中
-        //    //if(SavedFixFiles.fixFiles.Count > 0)
-        //    //{
-        //    //    foreach (FixFileData Data in SavedFixFiles.fixFiles)
-        //    //    {
-        //    //        worksheet.SetText(i, 1, Data.TestMachingType);
-        //    //        worksheet.SetText(i, 2, Data.TestMachingNum);
-        //    //        worksheet.SetText(i, 3, Data.BoardName);
-        //    //        worksheet.SetText(i, 4, Data.BoardNum);
-        //    //        worksheet.SetText(i, 5, Data.AbnormalFile.ToString());
-        //    //        worksheet.SetText(i, 6, Data.Abnormalphenomena);
-        //    //        worksheet.SetText(i, 7, Data.AbnormalString);
-        //    //        worksheet.SetText(i, 8, Data.FixWay);
-        //    //        worksheet.SetBoolean(i, 9, Data.IsFixed);
-        //    //        worksheet.SetText(i, 10, Data.ProductName);
-        //    //        worksheet.SetText(i, 11, Data.RegisteredPerson);
-        //    //        worksheet.SetText(i, 12, Data.StartFixDate.ToString());
-        //    //        worksheet.SetNumber(i, 13, Data.ID);
-        //    //        i++;
-        //    //    }
-        //    //    i = 1;
-        //    //    if (SavedFixFiles.fixedfiles.Count > 0)
-        //    //        foreach (FixedFileData Data in SavedFixFiles.fixedfiles)
-        //    //        {
-        //    //            worksheet.SetText(i, 17, Data.RegisteredPerson);
-        //    //            worksheet.SetText(i, 18, Data.FixedFile.ToString());
-        //    //            worksheet.SetText(i, 19, Data.FixdMethod);
-        //    //            worksheet.SetText(i, 20, Data.EndFixDate.ToString());
-        //    //            worksheet.SetText(i, 21, Data.TestingMethod);
-        //    //            worksheet.SetText(i, 22, Data.ID.ToString());
-        //    //            worksheet.SetText(i, 23, Data.Other2);
-        //    //            i++;
-        //    //        }
-        //        // 保存 Excel 文件
-        //        //Stream bookstream = null;
-        //        //workbook.SaveAs(bookstream);
-        //        //var fileSaverResult = await FileSaver.SaveAsync("invoice.xlsx", bookstream, CancellationToken.None);
-        //        //if (fileSaverResult.IsSuccessful)
-        //        //{
-        //        //    await Toast.Make($"The file was saved successfully to location: {fileSaverResult.FilePath}").Show(CancellationToken.None);
-        //        //}
-        //        //else
-        //        //{
-        //        //    await Toast.Make($"The file was not saved successfully with error: {fileSaverResult.Exception.Message}").Show(CancellationToken.None);
-        //        //}
-        //    }
-
-        //}
+    public static void WriteExcelFile()
+    {
+        using TestDbContext db = new TestDbContext();
+        var table = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(db.FixFileData.ToList()));
+        if(table != null)
+        {
+            dataTableToCsv(table, @"D:\FixData.xls"); //调用函数 
+        }
     }
 }
 

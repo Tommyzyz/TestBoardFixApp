@@ -5,7 +5,6 @@ global using TestBoardFixApp.View;
 global using TestBoardFixApp.Model;
 global using TestBoardFixApp.Data;
 global using CommunityToolkit.Maui;
-global using Syncfusion.XlsIO;
 global using Microsoft.EntityFrameworkCore;
 global using System.Configuration;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;

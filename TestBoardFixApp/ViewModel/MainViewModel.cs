@@ -7,9 +7,9 @@ namespace TestBoardFixApp.ViewModel;
 public partial class MainViewModel:ObservableObject
 {
     [RelayCommand]
-    private async Task OutputXLS()
+    private void OutputXLS()
     {
-        await CreatexlsServices.createExcel();
+        CreatexlsServices.WriteExcelFile();
     }
 
 
