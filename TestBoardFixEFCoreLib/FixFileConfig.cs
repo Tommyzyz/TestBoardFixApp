@@ -1,18 +1,12 @@
-﻿
-
-
-
-
-
-namespace TestBoardFixApp.Model;
+﻿namespace TestBoardFixEFCoreLib;
 
 public class FixFileConfig : IEntityTypeConfiguration<FixFileData>
 {
     public void Configure(EntityTypeBuilder<FixFileData> builder)
     {
-        builder.ToTable("T_FixFileData");
+        builder.ToTable("Table_FixFileData");
         builder.Property(e => e.TestMachingType).IsRequired();
-        builder.Property(e=>e.TestMachingNum).HasMaxLength(50).IsRequired();
+        builder.Property(e => e.TestMachingNum).HasMaxLength(50).IsRequired();
 
     }
 }

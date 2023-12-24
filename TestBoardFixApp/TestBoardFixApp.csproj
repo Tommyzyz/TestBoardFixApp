@@ -76,6 +76,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\TestBoardFixEFCoreLib\TestBoardFixEFCoreLib.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="View\FixedPage.xaml.cs">
 	    <DependentUpon>FixedPage.xaml</DependentUpon>
 	  </Compile>

@@ -1,13 +1,12 @@
-﻿
-namespace TestBoardFixApp.Model;
+﻿namespace TestBoardFixEFCoreLib;
 
 public class FixFileData
 {
-    public bool IsFixed {  get; set; }
+    public bool IsFixed { get; set; }
 
 
     [Key]
-    public Int64 ID { get; set; }
+    public long ID { get; set; }
 
     public string TestMachingType { get; set; } = null!;
 
@@ -24,7 +23,7 @@ public class FixFileData
 
     public string AbnormalString { get; set; } = null!;
 
-    public string ProductName {  get; set; } = null!;
+    public string ProductName { get; set; } = null!;
 
     public string FixWay { get; set; } = null!;
 
@@ -33,16 +32,16 @@ public class FixFileData
     [DataType(DataType.DateTime)]
     public DateTime StartFixDate { get; set; }
 
-    public string? Other {  get; set; }
+    public string? Other { get; set; }
 
-    //public FixedFileData? FixedFileData { get; set; }
-    
+    public FixedFileData? FixedFileData { get; set; }
+
 }
 
 public class FixedFileData
 {
     [Key]
-    public Int64 ID { get; set; }
+    public long ID { get; set; }
 
     public string RegisteredPerson { get; set; } = null!;
 
@@ -59,14 +58,16 @@ public class FixedFileData
 
     public string? Other2 { get; set; }
 
-    //public FixFileData FixFileData { get; set; }
+    public FixFileData FixFileData { get; set; }
+
+    public long FixFileDataID { get; set; }
 }
 
 public static class EquipmentData
 {
-    public static List<string> AbnormalphenomenaData = new() {"Cal_Fail","Check_Fail","测试故障"};
-    public static List<string> TestMachineTypeData = new() { "3360P", "3380P", "STS8200", "STS8280"};
-    public static List<string> BoardNameData = new() { "LPC","STPMU"};
+    public static List<string> AbnormalphenomenaData = new() { "Cal_Fail", "Check_Fail", "测试故障" };
+    public static List<string> TestMachineTypeData = new() { "3360P", "3380P", "STS8200", "STS8280" };
+    public static List<string> BoardNameData = new() { "LPC", "STPMU" };
     public static List<string> FixWayData = new() { "外协维修", "自主维修" };
 }
 

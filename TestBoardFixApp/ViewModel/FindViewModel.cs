@@ -1,13 +1,10 @@
-﻿
-using TestBoardFixApp.Data;
+﻿namespace TestBoardFixApp.ViewModel;
 
-namespace TestBoardFixApp.ViewModel;
-
-public partial class FindViewModel:ObservableObject
+public partial class FindViewModel(TestDbContext db):ObservableObject
 {
 
     [ObservableProperty]
-    private List<FixFileData> searchedFixFile= new TestDbContext().FixFileData.ToList<FixFileData>();
+    private List<FixFileData> searchedFixFile= db.FixFileData.ToList<FixFileData>();
 
     //[ObservableProperty]
     //private List<FixFileData> selectedFixFile = new();
@@ -29,8 +26,6 @@ public partial class FindViewModel:ObservableObject
     [RelayCommand]
     private void AdvancedSearch()
     {
-        using TestDbContext db = new TestDbContext();
-        {
             IQueryable<FixFileData> SelectedFile = db.FixFileData.Where(item => item.StartFixDate >= SelectedStartDate && item.StartFixDate <= SelectedEndDate);
             if (SelectedTestMachingType != null)
             {
@@ -45,8 +40,6 @@ public partial class FindViewModel:ObservableObject
                 SelectedFile = SelectedFile.Where(item => item.FixWay.Contains(SelectedFixWay));
             }
             SearchedFixFile = SelectedFile.ToList();
-        }
-
     }
 
 
@@ -55,7 +48,7 @@ public partial class FindViewModel:ObservableObject
     {
         if(SearchString!=null) 
         {
-            using TestDbContext db = new TestDbContext();
+            //using TestDbContext db = new TestDbContext();
             SearchedFixFile = db.FixFileData.Where(item => item.TestMachingType.Contains(SearchString)||
                                                      item.TestMachingNum.Contains(SearchString)||
                                                      item.RegisteredPerson.Contains(SearchString)||

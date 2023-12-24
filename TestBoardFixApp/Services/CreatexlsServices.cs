@@ -4,7 +4,7 @@ using CommunityToolkit.Maui.Storage;
 using System.Data;
 using Newtonsoft.Json;
 
-namespace TestBoardFixApp;
+namespace TestBoardFixApp.Serves;
 
 public static class CreatexlsServices
 {
@@ -38,13 +38,13 @@ public static class CreatexlsServices
         fs.Close();
     }
 
-    public static void WriteExcelFile()
+    public static void WriteExcelFile(TestDbContext db)
     {
-        using TestDbContext db = new TestDbContext();
+        //using TestDbContext db = new TestDbContext();
         var table = JsonConvert.DeserializeObject<DataTable>(JsonConvert.SerializeObject(db.FixFileData.ToList()));
-        if(table != null)
+        if (table != null)
         {
-            dataTableToCsv(table, @"D:\FixData.xls"); //调用函数 
+            dataTableToCsv(table, $@"D:\FixData{DateTime.Now.ToFileTime().ToString()}.xls"); //调用函数 
         }
     }
 }

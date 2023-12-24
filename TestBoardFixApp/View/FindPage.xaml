@@ -3,7 +3,7 @@
     x:Class="TestBoardFixApp.View.FindPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:Model="clr-namespace:TestBoardFixApp.Model"
+    xmlns:DbLib="clr-namespace:TestBoardFixEFCoreLib;assembly=TestBoardFixEFCoreLib"
     xmlns:app="clr-namespace:TestBoardFixApp"
     xmlns:viewmodel="clr-namespace:TestBoardFixApp.ViewModel"
     x:DataType="viewmodel:FindViewModel">
@@ -46,7 +46,7 @@
             Grid.Column="0"
             Margin="4"
             IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            ItemsSource="{x:Static Model:EquipmentData.TestMachineTypeData}"
+            ItemsSource="{x:Static DbLib:EquipmentData.TestMachineTypeData}"
             SelectedItem="{Binding SelectedTestMachingType}"
             VerticalOptions="StartAndExpand" />
 
@@ -63,7 +63,7 @@
             Grid.Column="1"
             Margin="4"
             IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            ItemsSource="{x:Static Model:EquipmentData.BoardNameData}"
+            ItemsSource="{x:Static DbLib:EquipmentData.BoardNameData}"
             SelectedItem="{Binding SelectedBoardName}"
             VerticalOptions="StartAndExpand" />
 
@@ -80,7 +80,7 @@
             Grid.Column="2"
             Margin="4"
             IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            ItemsSource="{x:Static Model:EquipmentData.FixWayData}"
+            ItemsSource="{x:Static DbLib:EquipmentData.FixWayData}"
             SelectedItem="{Binding SelectedFixWay}"
             VerticalOptions="StartAndExpand" />
 

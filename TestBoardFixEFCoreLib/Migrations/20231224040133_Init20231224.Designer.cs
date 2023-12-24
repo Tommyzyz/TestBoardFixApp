@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using TestBoardFixApp.Data;
+using TestBoardFixEFCoreLib;
 
 #nullable disable
 
-namespace TestBoardFixApp.Migrations
+namespace TestBoardFixEFCoreLib.Migrations
 {
     [DbContext(typeof(TestDbContext))]
-    [Migration("20231210061558_addFixedData")]
-    partial class addFixedData
+    [Migration("20231224040133_Init20231224")]
+    partial class Init20231224
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace TestBoardFixApp.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("TestBoardFixApp.Model.FixFileData", b =>
+            modelBuilder.Entity("TestBoardFixEFCoreLib.FixFileData", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
@@ -34,18 +34,23 @@ namespace TestBoardFixApp.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("ID"));
 
                     b.Property<string>("AbnormalString")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Abnormalphenomena")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("BoardName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("BoardNum")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FixWay")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("IsFixed")
@@ -55,9 +60,11 @@ namespace TestBoardFixApp.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("ProductName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("RegisteredPerson")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("StartFixDate")
@@ -74,10 +81,10 @@ namespace TestBoardFixApp.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("T_FixFileData", (string)null);
+                    b.ToTable("Table_FixFileData", (string)null);
                 });
 
-            modelBuilder.Entity("TestBoardFixApp.Model.FixedFileData", b =>
+            modelBuilder.Entity("TestBoardFixEFCoreLib.FixedFileData", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd()
@@ -88,21 +95,46 @@ namespace TestBoardFixApp.Migrations
                     b.Property<DateTime>("EndFixDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<long>("FixFileDataID")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("FixdMethod")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Other2")
                         .HasColumnType("text");
 
                     b.Property<string>("RegisteredPerson")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("TestingMethod")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("ID");
 
-                    b.ToTable("FixedFileData");
+                    b.HasIndex("FixFileDataID")
+                        .IsUnique();
+
+                    b.ToTable("Table_FixedFileData", (string)null);
+                });
+
+            modelBuilder.Entity("TestBoardFixEFCoreLib.FixedFileData", b =>
+                {
+                    b.HasOne("TestBoardFixEFCoreLib.FixFileData", "FixFileData")
+                        .WithOne("FixedFileData")
+                        .HasForeignKey("TestBoardFixEFCoreLib.FixedFileData", "FixFileDataID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FixFileData");
+                });
+
+            modelBuilder.Entity("TestBoardFixEFCoreLib.FixFileData", b =>
+                {
+                    b.Navigation("FixedFileData");
                 });
 #pragma warning restore 612, 618
         }

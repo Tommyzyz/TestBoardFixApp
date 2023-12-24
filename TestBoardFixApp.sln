@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestBoardFixApp", "TestBoardFixApp\TestBoardFixApp.csproj", "{239AD648-C63D-4D1D-B97D-5FC80C07AB08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBoardFixEFCoreLib", "TestBoardFixEFCoreLib\TestBoardFixEFCoreLib.csproj", "{5C536B03-CF34-4424-8F3D-31E0842AA035}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,14 @@ Global
 		{239AD648-C63D-4D1D-B97D-5FC80C07AB08}.Release|ARM64.ActiveCfg = Release|ARM64
 		{239AD648-C63D-4D1D-B97D-5FC80C07AB08}.Release|ARM64.Build.0 = Release|ARM64
 		{239AD648-C63D-4D1D-B97D-5FC80C07AB08}.Release|ARM64.Deploy.0 = Release|ARM64
+		{5C536B03-CF34-4424-8F3D-31E0842AA035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C536B03-CF34-4424-8F3D-31E0842AA035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C536B03-CF34-4424-8F3D-31E0842AA035}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{5C536B03-CF34-4424-8F3D-31E0842AA035}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{5C536B03-CF34-4424-8F3D-31E0842AA035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C536B03-CF34-4424-8F3D-31E0842AA035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C536B03-CF34-4424-8F3D-31E0842AA035}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{5C536B03-CF34-4424-8F3D-31E0842AA035}.Release|ARM64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

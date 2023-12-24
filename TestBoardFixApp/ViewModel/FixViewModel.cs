@@ -1,10 +1,6 @@
-﻿
-using Microsoft.Maui.Storage;
-using TestBoardFixApp.Data;
+﻿namespace TestBoardFixApp.ViewModel;
 
-namespace TestBoardFixApp.ViewModel;
-
-public partial class FixViewModel:ObservableObject
+public partial class FixViewModel(TestDbContext db):ObservableObject
 {
     [ObservableProperty]
     private FixFileData fixFile=new();
@@ -32,7 +28,7 @@ public partial class FixViewModel:ObservableObject
     [RelayCommand]
     private async Task SaveFixAsync()
     {
-        using TestDbContext db = new TestDbContext();
+        //using TestDbContext db = new TestDbContext();
         db.FixFileData.Add(FixFile);
         await db.SaveChangesAsync();
 

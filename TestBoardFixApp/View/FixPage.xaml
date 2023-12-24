@@ -3,7 +3,7 @@
     x:Class="TestBoardFixApp.View.FixPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:Model="clr-namespace:TestBoardFixApp.Model"
+    xmlns:DBLib="clr-namespace:TestBoardFixEFCoreLib;assembly=TestBoardFixEFCoreLib"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodel="clr-namespace:TestBoardFixApp.ViewModel"
     x:DataType="viewmodel:FixViewModel">
@@ -21,7 +21,7 @@
                     Grid.Column="1"
                     Margin="8"
                     HorizontalOptions="Start"
-                    ItemsSource="{x:Static Model:EquipmentData.TestMachineTypeData}"
+                    ItemsSource="{x:Static DBLib:EquipmentData.TestMachineTypeData}"
                     SelectedItem="{Binding FixFile.TestMachingType}"
                     VerticalOptions="Center"
                     WidthRequest="120" />
@@ -55,7 +55,7 @@
                     Grid.Column="1"
                     Margin="8"
                     HorizontalOptions="Start"
-                    ItemsSource="{x:Static Model:EquipmentData.BoardNameData}"
+                    ItemsSource="{x:Static DBLib:EquipmentData.BoardNameData}"
                     SelectedItem="{Binding FixFile.BoardName}"
                     VerticalOptions="Center"
                     WidthRequest="120" />
@@ -109,7 +109,7 @@
                     Grid.Column="1"
                     Margin="8"
                     HorizontalOptions="Start"
-                    ItemsSource="{x:Static Model:EquipmentData.FixWayData}"
+                    ItemsSource="{x:Static DBLib:EquipmentData.FixWayData}"
                     SelectedItem="{Binding FixFile.FixWay}"
                     VerticalOptions="Center"
                     WidthRequest="120" />
@@ -125,7 +125,7 @@
                     Grid.Column="1"
                     Margin="8"
                     HorizontalOptions="Start"
-                    ItemsSource="{x:Static Model:EquipmentData.AbnormalphenomenaData}"
+                    ItemsSource="{x:Static DBLib:EquipmentData.AbnormalphenomenaData}"
                     SelectedItem="{Binding FixFile.Abnormalphenomena}"
                     VerticalOptions="Center"
                     WidthRequest="120" />

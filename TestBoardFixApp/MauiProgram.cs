@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui.Storage;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using TestBoardFixApp.View;
 
 namespace TestBoardFixApp
@@ -27,6 +28,10 @@ namespace TestBoardFixApp
             builder.Services.AddSingleton<FindPage>();
             builder.Services.AddSingleton<FindViewModel>();
             builder.Services.AddSingleton<IFileSaver>(FileSaver.Default);
+            builder.Services.AddDbContext<TestDbContext>(opt => {
+                string connStr = ConfigurationManager.ConnectionStrings["TestDbConnectString"].ToString();
+                opt.UseNpgsql(connStr);
+            });
 
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 

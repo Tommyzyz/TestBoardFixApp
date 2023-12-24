@@ -37,6 +37,10 @@
                 Command="{Binding}"
                 Text="登录"
                 WidthRequest="300" />
+            <Button
+                Command="{Binding AddToDatabaseCommand}"
+                Text="添加数据"
+                WidthRequest="300" />
 
 
             <Button
