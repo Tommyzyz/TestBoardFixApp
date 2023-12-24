@@ -5,6 +5,8 @@
         public AppShell()
         {
             InitializeComponent();
+
+            Routing.RegisterRoute(Routes.FixedPage, typeof(FixedPage));
         }
     }
 }

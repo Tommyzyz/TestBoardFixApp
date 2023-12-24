@@ -1,6 +1,6 @@
 namespace TestBoardFixApp.Serves
 {
-    public static class loginservices
+    public static class LoginServices
     {
         public static bool login(string username)
         {

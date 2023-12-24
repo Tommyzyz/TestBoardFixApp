@@ -123,11 +123,18 @@
 
         <ScrollView Grid.Row="3" Grid.ColumnSpan="5">
             <VerticalStackLayout>
-                <CollectionView EmptyView="无数据" ItemsSource="{Binding SearchedFixFile}">
-                    <!--  SelectedItems="{Binding SelectedFixFile}"  -->
-                    <!--  SelectionMode="Multiple">  -->
+                <CollectionView
+                    EmptyView="无数据"
+                    ItemsSource="{Binding SearchedFixFile}"
+                    SelectedItem="{Binding SelectedFixFile}"
+                    SelectionMode="Single">
+                    <FlyoutBase.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="维修后提交信息" Command="{Binding AddFixedFileCommand}"/>
+                        </MenuFlyout>
+                    </FlyoutBase.ContextFlyout>
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="Model:FixFileData">
+                        <DataTemplate x:DataType="DbLib:FixFileData">
                             <VerticalStackLayout>
                                 <Label>
                                     <Label.Text>

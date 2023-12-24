@@ -28,7 +28,6 @@ public partial class FixViewModel(TestDbContext db):ObservableObject
     [RelayCommand]
     private async Task SaveFixAsync()
     {
-        //using TestDbContext db = new TestDbContext();
         db.FixFileData.Add(FixFile);
         await db.SaveChangesAsync();
 

@@ -1,10 +1,12 @@
 ﻿using CommunityToolkit.Maui.Storage;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TestBoardFixApp.View;
 
 namespace TestBoardFixApp
 {
+    [AutoRoutes("Page")]
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()

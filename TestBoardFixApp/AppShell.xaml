@@ -19,11 +19,6 @@
         Route="FixPage"
         Shell.NavBarIsVisible="true" />
         <ShellContent
-        Title="维修后信息"
-        ContentTemplate="{DataTemplate view:FixedPage}"
-        Route="FixedPage" 
-        Shell.NavBarIsVisible="true" />
-        <ShellContent
         Title="维修记录"
         ContentTemplate="{DataTemplate view:FindPage}"
         Route="FindPage" 

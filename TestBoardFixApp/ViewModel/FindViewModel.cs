@@ -6,8 +6,9 @@ public partial class FindViewModel(TestDbContext db):ObservableObject
     [ObservableProperty]
     private List<FixFileData> searchedFixFile= db.FixFileData.ToList<FixFileData>();
 
-    //[ObservableProperty]
-    //private List<FixFileData> selectedFixFile = new();
+    [ObservableProperty]
+    private FixFileData selectedFixFile;
+
     [ObservableProperty]
     private string? selectedTestMachingType;
 
@@ -48,7 +49,6 @@ public partial class FindViewModel(TestDbContext db):ObservableObject
     {
         if(SearchString!=null) 
         {
-            //using TestDbContext db = new TestDbContext();
             SearchedFixFile = db.FixFileData.Where(item => item.TestMachingType.Contains(SearchString)||
                                                      item.TestMachingNum.Contains(SearchString)||
                                                      item.RegisteredPerson.Contains(SearchString)||
@@ -60,4 +60,26 @@ public partial class FindViewModel(TestDbContext db):ObservableObject
                                                      item.ProductName.Contains(SearchString)).ToList();
         }
     }
+
+    [RelayCommand]
+    private async Task AddFixedFile()
+    {
+        FixedFileData FixedFile;
+        var FixedFiles = db.FixedFileData.Where(e => e.FixFileDataID == SelectedFixFile.ID).ToList();
+        if(FixedFiles.Count > 0) 
+        {
+            FixedFile = FixedFiles[0];
+        }
+        else
+        {
+            FixedFile = new();
+            FixedFile.FixFileDataID = SelectedFixFile.ID;
+        }
+        var navigationParameter = new Dictionary<string, object>
+            {
+                {"FixedFile",FixedFile}
+            };
+        await Shell.Current.GoToAsync(Routes.FixedPage, navigationParameter);
+    }
+
 }
