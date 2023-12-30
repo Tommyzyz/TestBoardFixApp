@@ -1,9 +1,14 @@
-﻿namespace TestBoardFixApp.ViewModel;
+﻿using Microsoft.UI.Xaml.Controls;
+
+namespace TestBoardFixApp.ViewModel;
 
 public partial class FixViewModel(TestDbContext db):ObservableObject
 {
     [ObservableProperty]
     private FixFileData fixFile=new();
+
+    [ObservableProperty]
+    private ImageSource? image;
 
     [ObservableProperty]
     private bool canSave=false;
@@ -44,9 +49,8 @@ public partial class FixViewModel(TestDbContext db):ObservableObject
             var result = await FilePicker.PickAsync(new PickOptions { FileTypes=FilePickerFileType.Images});
             if (result != null)
             {
-                  var stream = await result.OpenReadAsync();
-                  FixFile.AbnormalFile=ImageSource.FromStream(() => stream);
-
+                FixFile.AbnormalFile = ImageSource.FromStream(() => result.OpenReadAsync().Result);
+                Image = FixFile.AbnormalFile;
             }
            
         }

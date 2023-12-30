@@ -11,6 +11,10 @@ namespace TestBoardFixApp.ViewModel
         private FixedFileData fixedFile;
 
         [ObservableProperty]
+        private ImageSource? image;
+
+
+        [ObservableProperty]
         private bool canSave = false;
 
         [RelayCommand]
@@ -24,7 +28,6 @@ namespace TestBoardFixApp.ViewModel
         [RelayCommand]
         private void CanSaveChick()
         {
-            var abc = FixedFile;
             FixedFile.RegisteredPerson = "admin";
             if (FixedFile.TestingMethod != null && FixedFile.FixdMethod != null && FixedFile.FixedFile != null &&
                 FixedFile.RegisteredPerson != null)
@@ -44,6 +47,7 @@ namespace TestBoardFixApp.ViewModel
             if (result != null)
             {
                 FixedFile.FixedFile = ImageSource.FromFile(result.FullPath);
+                Image = FixedFile.FixedFile;
             }
         }
     }

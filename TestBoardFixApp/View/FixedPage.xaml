@@ -79,11 +79,10 @@
                 <Image
                     Grid.Row="4"
                     Grid.ColumnSpan="2"
-                    Aspect="AspectFill"
-                    BackgroundColor="Aquamarine"
-                    HeightRequest="100"
-                    Source="{Binding FixedFile.FixedFile}"
-                    WidthRequest="200" />
+                    Aspect="AspectFit"
+                    MaximumHeightRequest="800"
+                    MaximumWidthRequest="400"
+                    Source="{Binding Image}" />
 
 
                 <Label

@@ -65,9 +65,9 @@ public partial class FindViewModel(TestDbContext db):ObservableObject
     private async Task AddFixedFile()
     {
         FixedFileData FixedFile;
-        var FixedFiles = db.FixedFileData.Where(e => e.FixFileDataID == SelectedFixFile.ID).ToList();
-        if(FixedFiles.Count > 0) 
+        if(SelectedFixFile.IsFixed==true) 
         {
+            var FixedFiles = db.FixedFileData.Where(e => e.FixFileDataID == SelectedFixFile.ID).ToList();
             FixedFile = FixedFiles[0];
         }
         else

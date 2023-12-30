@@ -147,12 +147,10 @@
                 <Image
                     Grid.Row="8"
                     Grid.ColumnSpan="2"
-                    Aspect="AspectFill"
-                    BackgroundColor="Aquamarine"
-                    HeightRequest="100"
-                    Source="{Binding FixFile.AbnormalFile}"
-                    WidthRequest="200" />
-
+                    Aspect="AspectFit"
+                    MaximumHeightRequest="800"
+                    MaximumWidthRequest="400"
+                    Source="{Binding Image}" />
                 <Label
                     Grid.Row="9"
                     Grid.Column="0"
@@ -164,7 +162,7 @@
                     Grid.Column="1"
                     Margin="8"
                     HorizontalOptions="Start"
-                    Text="{Binding FixFile.AbnormalString}"
+                    Text="{Binding FixFile.AbnormalString, Mode=TwoWay}"
                     VerticalOptions="Center"
                     WidthRequest="120">
                     <Editor.Behaviors>

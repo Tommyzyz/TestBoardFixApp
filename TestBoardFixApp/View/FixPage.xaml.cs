@@ -1,5 +1,7 @@
 
 
+using System.IO.Compression;
+
 namespace TestBoardFixApp.View;
 
 public partial class FixPage : ContentPage
@@ -16,4 +18,5 @@ public partial class FixPage : ContentPage
         
         await DisplayAlert("Alert", "±£´æ³É¹¦", "OK");
     }
+
 }
