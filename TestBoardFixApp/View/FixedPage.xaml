@@ -40,7 +40,7 @@
                     Grid.Column="1"
                     Margin="8"
                     HorizontalOptions="Start"
-                    Text="{Binding FixedFile.FixdMethod}"
+                    Text="{Binding FixedFile.FixedMethod}"
                     VerticalOptions="Center"
                     WidthRequest="120">
                     <Editor.Behaviors>
@@ -115,7 +115,6 @@
                 Grid.Row="6"
                 Grid.ColumnSpan="2"
                 Margin="8"
-                Clicked="Button_ClickedAsync"
                 Command="{Binding SaveFixedCommand}"
                 IsEnabled="{Binding CanSave}"
                 Text="保存"

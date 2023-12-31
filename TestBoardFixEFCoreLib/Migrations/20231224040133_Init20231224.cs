@@ -19,11 +19,11 @@ namespace TestBoardFixEFCoreLib.Migrations
                     ID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     IsFixed = table.Column<bool>(type: "boolean", nullable: false),
-                    TestMachingType = table.Column<string>(type: "text", nullable: false),
-                    TestMachingNum = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    TestMachineType = table.Column<string>(type: "text", nullable: false),
+                    TestMachineNum = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     BoardName = table.Column<string>(type: "text", nullable: false),
                     BoardNum = table.Column<string>(type: "text", nullable: false),
-                    Abnormalphenomena = table.Column<string>(type: "text", nullable: false),
+                    AbnormalBehavior = table.Column<string>(type: "text", nullable: false),
                     AbnormalString = table.Column<string>(type: "text", nullable: false),
                     ProductName = table.Column<string>(type: "text", nullable: false),
                     FixWay = table.Column<string>(type: "text", nullable: false),
@@ -44,7 +44,7 @@ namespace TestBoardFixEFCoreLib.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RegisteredPerson = table.Column<string>(type: "text", nullable: false),
                     TestingMethod = table.Column<string>(type: "text", nullable: false),
-                    FixdMethod = table.Column<string>(type: "text", nullable: false),
+                    FixedMethod = table.Column<string>(type: "text", nullable: false),
                     EndFixDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Other2 = table.Column<string>(type: "text", nullable: true),
                     FixFileDataID = table.Column<long>(type: "bigint", nullable: false)

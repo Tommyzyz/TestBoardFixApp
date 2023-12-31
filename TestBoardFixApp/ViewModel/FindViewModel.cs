@@ -10,7 +10,7 @@ public partial class FindViewModel(TestDbContext db):ObservableObject
     private FixFileData selectedFixFile;
 
     [ObservableProperty]
-    private string? selectedTestMachingType;
+    private string? selectedTestMachineType;
 
     [ObservableProperty]
     private string? selectedBoardName;
@@ -28,9 +28,9 @@ public partial class FindViewModel(TestDbContext db):ObservableObject
     private void AdvancedSearch()
     {
             IQueryable<FixFileData> SelectedFile = db.FixFileData.Where(item => item.StartFixDate >= SelectedStartDate && item.StartFixDate <= SelectedEndDate);
-            if (SelectedTestMachingType != null)
+            if (SelectedTestMachineType != null)
             {
-                SelectedFile = SelectedFile.Where(item => item.TestMachingType.Contains(SelectedTestMachingType));
+                SelectedFile = SelectedFile.Where(item => item.TestMachineType.Contains(SelectedTestMachineType));
             }
             if(SelectedBoardName != null) 
             {
@@ -49,10 +49,10 @@ public partial class FindViewModel(TestDbContext db):ObservableObject
     {
         if(SearchString!=null) 
         {
-            SearchedFixFile = db.FixFileData.Where(item => item.TestMachingType.Contains(SearchString)||
-                                                     item.TestMachingNum.Contains(SearchString)||
+            SearchedFixFile = db.FixFileData.Where(item => item.TestMachineType.Contains(SearchString)||
+                                                     item.TestMachineNum.Contains(SearchString)||
                                                      item.RegisteredPerson.Contains(SearchString)||
-                                                     item.Abnormalphenomena.Contains(SearchString)||
+                                                     item.AbnormalBehavior.Contains(SearchString)||
                                                      item.AbnormalString.Contains(SearchString)||
                                                      item.StartFixDate.ToString().Contains(SearchString)||
                                                      item.BoardName.Contains(SearchString)||
@@ -64,22 +64,29 @@ public partial class FindViewModel(TestDbContext db):ObservableObject
     [RelayCommand]
     private async Task AddFixedFile()
     {
-        FixedFileData FixedFile;
-        if(SelectedFixFile.IsFixed==true) 
+        if(SelectedFixFile!=null)
         {
-            var FixedFiles = db.FixedFileData.Where(e => e.FixFileDataID == SelectedFixFile.ID).ToList();
-            FixedFile = FixedFiles[0];
-        }
-        else
-        {
-            FixedFile = new();
-            FixedFile.FixFileDataID = SelectedFixFile.ID;
-        }
-        var navigationParameter = new Dictionary<string, object>
+            FixedFileData FixedFile;
+            if (SelectedFixFile.IsFixed == true)
+            {
+                var FixedFiles = db.FixedFileData.Where(e => e.FixFileDataID == SelectedFixFile.ID).ToList();
+                FixedFile = FixedFiles[0];
+            }
+            else
+            {
+                FixedFile = new();
+                FixedFile.FixFileDataID = SelectedFixFile.ID;
+            }
+            var navigationParameter = new Dictionary<string, object>
             {
                 {"FixedFile",FixedFile}
             };
-        await Shell.Current.GoToAsync(Routes.FixedPage, navigationParameter);
+            await Shell.Current.GoToAsync(Routes.FixedPage, navigationParameter);
+        }
+        else
+        {
+            await Application.Current.MainPage.DisplayAlert("提示", "请先选中一项", "确定");
+        }
     }
 
 }

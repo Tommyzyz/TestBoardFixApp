@@ -22,7 +22,7 @@
                     Margin="8"
                     HorizontalOptions="Start"
                     ItemsSource="{x:Static DBLib:EquipmentData.TestMachineTypeData}"
-                    SelectedItem="{Binding FixFile.TestMachingType}"
+                    SelectedItem="{Binding FixFile.TestMachineType}"
                     VerticalOptions="Center"
                     WidthRequest="120" />
                 <Label
@@ -36,7 +36,7 @@
                     Grid.Column="1"
                     Margin="8"
                     HorizontalOptions="Start"
-                    Text="{Binding FixFile.TestMachingNum}"
+                    Text="{Binding FixFile.TestMachineNum}"
                     VerticalOptions="Center"
                     WidthRequest="120">
                     <Editor.Behaviors>
@@ -125,8 +125,8 @@
                     Grid.Column="1"
                     Margin="8"
                     HorizontalOptions="Start"
-                    ItemsSource="{x:Static DBLib:EquipmentData.AbnormalphenomenaData}"
-                    SelectedItem="{Binding FixFile.Abnormalphenomena}"
+                    ItemsSource="{x:Static DBLib:EquipmentData.AbnormalBehaviorData}"
+                    SelectedItem="{Binding FixFile.AbnormalBehavior}"
                     VerticalOptions="Center"
                     WidthRequest="120" />
                 <Label
@@ -211,7 +211,6 @@
                 Grid.Row="12"
                 Grid.ColumnSpan="2"
                 Margin="8"
-                Clicked="Button_ClickedAsync"
                 Command="{Binding SaveFixCommand}"
                 IsEnabled="{Binding CanSave}"
                 Text="保存"

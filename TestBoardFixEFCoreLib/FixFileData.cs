@@ -6,17 +6,18 @@ public class FixFileData
 
 
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]  //设置自增
     public long ID { get; set; }
 
-    public string TestMachingType { get; set; } = null!;
+    public string TestMachineType { get; set; } = null!;
 
-    public string TestMachingNum { get; set; } = null!;
+    public string TestMachineNum { get; set; } = null!;
 
     public string BoardName { get; set; } = null!;
 
     public string BoardNum { get; set; } = null!;
 
-    public string Abnormalphenomena { get; set; } = null!;
+    public string AbnormalBehavior { get; set; } = null!;
 
     [NotMapped]
     public ImageSource AbnormalFile { get; set; } = null!;
@@ -41,13 +42,14 @@ public class FixFileData
 public class FixedFileData
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]  //设置自增
     public long ID { get; set; }
 
     public string RegisteredPerson { get; set; } = null!;
 
     public string TestingMethod { get; set; } = null!;
 
-    public string FixdMethod { get; set; } = null!;
+    public string FixedMethod { get; set; } = null!;
 
     [NotMapped]
     public ImageSource FixedFile { get; set; } = null!;
@@ -65,7 +67,7 @@ public class FixedFileData
 
 public static class EquipmentData
 {
-    public static List<string> AbnormalphenomenaData = new() { "Cal_Fail", "Check_Fail", "测试故障" };
+    public static List<string> AbnormalBehaviorData = new() { "Cal_Fail", "Check_Fail", "测试故障" };
     public static List<string> TestMachineTypeData = new() { "3360P", "3380P", "STS8200", "STS8280" };
     public static List<string> BoardNameData = new() { "LPC", "STPMU" };
     public static List<string> FixWayData = new() { "外协维修", "自主维修" };

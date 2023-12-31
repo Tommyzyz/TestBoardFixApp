@@ -47,7 +47,7 @@
             Margin="4"
             IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
             ItemsSource="{x:Static DbLib:EquipmentData.TestMachineTypeData}"
-            SelectedItem="{Binding SelectedTestMachingType}"
+            SelectedItem="{Binding SelectedTestMachineType}"
             VerticalOptions="StartAndExpand" />
 
         <Label
@@ -124,13 +124,17 @@
         <ScrollView Grid.Row="3" Grid.ColumnSpan="5">
             <VerticalStackLayout>
                 <CollectionView
+                    x:Name="CollectionView"
                     EmptyView="无数据"
                     ItemsSource="{Binding SearchedFixFile}"
                     SelectedItem="{Binding SelectedFixFile}"
                     SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="4" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
                     <FlyoutBase.ContextFlyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Text="维修后提交信息" Command="{Binding AddFixedFileCommand}"/>
+                            <MenuFlyoutItem Command="{Binding AddFixedFileCommand}" Text="维修后提交信息" />
                         </MenuFlyout>
                     </FlyoutBase.ContextFlyout>
                     <CollectionView.ItemTemplate>

@@ -14,7 +14,7 @@ public partial class MainViewModel(TestDbContext db):ObservableObject
     public async Task AddToDatabase()
     {
         FixFileData File = new FixFileData();
-        File.Abnormalphenomena = "ahjwdb";
+        File.AbnormalBehavior = "ahjwdb";
         File.AbnormalString = "异常";
         File.BoardName = "LPC";
         File.BoardNum = "76567";
@@ -22,12 +22,12 @@ public partial class MainViewModel(TestDbContext db):ObservableObject
         File.ProductName = "PAI37928";
         File.RegisteredPerson = "ADMIN";
         File.StartFixDate = DateTime.Now;
-        File.TestMachingNum = "TT-620";
-        File.TestMachingType = "STS8200";
+        File.TestMachineNum = "TT-620";
+        File.TestMachineType = "STS8200";
         
         var FixedData = new FixedFileData();
         FixedData.TestingMethod = "检测继电器接触";
-        FixedData.FixdMethod = "更换继电器";
+        FixedData.FixedMethod = "更换继电器";
         FixedData.EndFixDate = DateTime.Now;
         FixedData.RegisteredPerson = "张三";
         File.FixedFileData = FixedData;

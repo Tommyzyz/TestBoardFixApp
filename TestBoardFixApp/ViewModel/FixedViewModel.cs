@@ -22,6 +22,7 @@ namespace TestBoardFixApp.ViewModel
         {
             db.Update(FixedFile);
             await db.SaveChangesAsync();
+            await Application.Current.MainPage.DisplayAlert("提示", "保存成功", "确定");
             await Shell.Current.GoToAsync("..");
         }
 
@@ -29,7 +30,7 @@ namespace TestBoardFixApp.ViewModel
         private void CanSaveChick()
         {
             FixedFile.RegisteredPerson = "admin";
-            if (FixedFile.TestingMethod != null && FixedFile.FixdMethod != null && FixedFile.FixedFile != null &&
+            if (FixedFile.TestingMethod != null && FixedFile.FixedMethod != null && FixedFile.FixedFile != null &&
                 FixedFile.RegisteredPerson != null)
             {
                 if(FixedFile.Other2 ==null)

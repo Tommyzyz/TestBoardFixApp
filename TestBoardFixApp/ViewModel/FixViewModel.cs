@@ -17,9 +17,9 @@ public partial class FixViewModel(TestDbContext db):ObservableObject
     private void CanSaveChick()
     {
         FixFile.RegisteredPerson = "admin";
-        if (FixFile.TestMachingType != null && FixFile.TestMachingNum != null && FixFile.FixWay != null && 
+        if (FixFile.TestMachineType != null && FixFile.TestMachineNum != null && FixFile.FixWay != null && 
             FixFile.AbnormalFile != null && FixFile.BoardName != null && FixFile.BoardNum != null && 
-            FixFile.ProductName != null&&FixFile.Abnormalphenomena!=null&&FixFile.AbnormalString!=null&&
+            FixFile.ProductName != null&&FixFile.AbnormalBehavior!=null&&FixFile.AbnormalString!=null&&
             FixFile.RegisteredPerson!=null)
         {
             if(FixFile.Other==null)
@@ -35,7 +35,7 @@ public partial class FixViewModel(TestDbContext db):ObservableObject
     {
         db.FixFileData.Add(FixFile);
         await db.SaveChangesAsync();
-
+        await Application.Current.MainPage.DisplayAlert("提示", "保存成功", "确定");
         FixFile = new();
     }
 

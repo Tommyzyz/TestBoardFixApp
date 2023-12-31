@@ -11,12 +11,4 @@ public partial class FixPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
-
-
-    private async void Button_ClickedAsync(object sender, EventArgs e)
-    {
-        
-        await DisplayAlert("Alert", "±£´æ³É¹¦", "OK");
-    }
-
 }
