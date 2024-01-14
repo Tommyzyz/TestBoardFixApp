@@ -7,121 +7,120 @@
     xmlns:app="clr-namespace:TestBoardFixApp"
     xmlns:viewmodel="clr-namespace:TestBoardFixApp.ViewModel"
     x:DataType="viewmodel:FindViewModel">
-    <Grid
-        Margin="4"
-        Padding="4"
-        ColumnDefinitions="*,*,*,1.5*,110"
-        RowDefinitions="Auto,Auto,Auto,Auto">
-        <SearchBar
-            x:Name="searchBar"
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="4"
-            SearchCommand="{Binding SearchCommand}"
-            SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
-        <Frame
-            Grid.Row="0"
-            Grid.Column="4"
-            Padding="0">
-            <Grid ColumnDefinitions="*,3*">
-                <CheckBox
-                    x:Name="Checkbox"
-                    Grid.Column="0"
-                    HorizontalOptions="Center" />
-                <Label
-                    Grid.Column="1"
-                    Text="高级搜索"
-                    VerticalOptions="Center" />
-            </Grid>
+    <Grid RowDefinitions="Auto,Auto">
+        <Frame Grid.Row="0">
+            <StackLayout>
+                <Grid ColumnDefinitions="*,110" RowDefinitions="Auto,Auto">
+                    <SearchBar
+                        x:Name="searchBar"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        SearchCommand="{Binding SearchCommand}"
+                        SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}" />
+                    <Frame
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Padding="0">
+                        <Grid ColumnDefinitions="*,3*">
+                            <CheckBox
+                                x:Name="Checkbox"
+                                Grid.Column="0"
+                                HorizontalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                Text="高级搜索"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                    <FlexLayout
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
+                        JustifyContent="SpaceAround"
+                        Wrap="Wrap">
+                        <Border HeightRequest="80" StrokeShape="RoundRectangle 10,0,10,10">
+                            <Grid RowDefinitions="*,*">
+                                <Label
+                                    Grid.Row="0"
+                                    Margin="2"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="测试机型号:"
+                                    VerticalOptions="Center" />
+                                <Picker
+                                    Grid.Row="1"
+                                    ItemsSource="{x:Static DbLib:EquipmentData.TestMachineTypeData}"
+                                    SelectedItem="{Binding SelectedTestMachineType}"
+                                    VerticalOptions="StartAndExpand" />
+                            </Grid>
+                        </Border>
+                        <Border HeightRequest="80" StrokeShape="RoundRectangle 10,0,10,10">
+                            <Grid RowDefinitions="*,*">
+                                <Label
+                                    Grid.Row="0"
+                                    Margin="2"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="板卡名称:"
+                                    VerticalOptions="Center" />
+                                <Picker
+                                    Grid.Row="1"
+                                    ItemsSource="{x:Static DbLib:EquipmentData.BoardNameData}"
+                                    SelectedItem="{Binding SelectedBoardName}"
+                                    VerticalOptions="StartAndExpand" />
+                            </Grid>
+                        </Border>
+                        <Border HeightRequest="80" StrokeShape="RoundRectangle 10,0,10,10">
+                            <Grid RowDefinitions="*,*">
+                                <Label
+                                    Grid.Row="0"
+                                    Margin="2"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="维修方式:"
+                                    VerticalOptions="Center" />
+                                <Picker
+                                    Grid.Row="1"
+                                    ItemsSource="{x:Static DbLib:EquipmentData.FixWayData}"
+                                    SelectedItem="{Binding SelectedFixWay}"
+                                    VerticalOptions="StartAndExpand" />
+                            </Grid>
+                        </Border>
+                        <Border
+                            HeightRequest="80"
+                            MinimumWidthRequest="250"
+                            StrokeShape="RoundRectangle 10,0,10,10">
+                            <Grid RowDefinitions="*,*">
+                                <Label
+                                    Grid.Row="0"
+                                    Margin="2"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="维修日期:"
+                                    VerticalOptions="Center" />
+                                <HorizontalStackLayout
+                                    Grid.Row="2"
+                                    Grid.Column="3"
+                                    Margin="4">
+                                    <Label Text="从:" VerticalOptions="Center" />
+                                    <DatePicker Date="{Binding SelectedStartDate}" VerticalOptions="StartAndExpand" />
+                                    <Label Text="到:" VerticalOptions="Center" />
+                                    <DatePicker Date="{Binding SelectedEndDate}" VerticalOptions="StartAndExpand" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Border>
+                    </FlexLayout>
+                    <Border
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
+                        Stroke="#C49B33"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        StrokeThickness="4">
+                        <Button Command="{Binding AdvancedSearchCommand}" Text="搜索" />
+                    </Border>
+
+                </Grid>
+            </StackLayout>
         </Frame>
-        <Label
-            Grid.Row="1"
-            Grid.Column="0"
-            Margin="4"
-            HorizontalOptions="StartAndExpand"
-            IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            Text="测试机型号:" />
-        <Picker
-            Grid.Row="2"
-            Grid.Column="0"
-            Margin="4"
-            IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            ItemsSource="{x:Static DbLib:EquipmentData.TestMachineTypeData}"
-            SelectedItem="{Binding SelectedTestMachineType}"
-            VerticalOptions="StartAndExpand" />
 
-        <Label
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="4"
-            HorizontalOptions="StartAndExpand"
-            IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            Text="板卡名称:"
-            VerticalOptions="Center" />
-        <Picker
-            Grid.Row="2"
-            Grid.Column="1"
-            Margin="4"
-            IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            ItemsSource="{x:Static DbLib:EquipmentData.BoardNameData}"
-            SelectedItem="{Binding SelectedBoardName}"
-            VerticalOptions="StartAndExpand" />
-
-        <Label
-            Grid.Row="1"
-            Grid.Column="2"
-            Margin="4"
-            HorizontalOptions="StartAndExpand"
-            IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            Text="维修方式:"
-            VerticalOptions="Center" />
-        <Picker
-            Grid.Row="2"
-            Grid.Column="2"
-            Margin="4"
-            IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            ItemsSource="{x:Static DbLib:EquipmentData.FixWayData}"
-            SelectedItem="{Binding SelectedFixWay}"
-            VerticalOptions="StartAndExpand" />
-
-        <Label
-            Grid.Row="1"
-            Grid.Column="3"
-            Margin="4"
-            HorizontalOptions="StartAndExpand"
-            IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            Text="维修日期:"
-            VerticalOptions="Center" />
-        <HorizontalStackLayout
-            Grid.Row="2"
-            Grid.Column="3"
-            Margin="4">
-            <Label
-                IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-                Text="从:"
-                VerticalOptions="Center" />
-            <DatePicker
-                Date="{Binding SelectedStartDate}"
-                IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-                VerticalOptions="StartAndExpand" />
-            <Label
-                IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-                Text="到:"
-                VerticalOptions="Center" />
-            <DatePicker
-                Date="{Binding SelectedEndDate}"
-                IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-                VerticalOptions="StartAndExpand" />
-        </HorizontalStackLayout>
-        <Button
-            Grid.Row="2"
-            Grid.Column="5"
-            Margin="4"
-            Command="{Binding AdvancedSearchCommand}"
-            IsVisible="{Binding Path=IsChecked, Source={x:Reference Checkbox}}"
-            Text="搜索" />
-
-        <ScrollView Grid.Row="3" Grid.ColumnSpan="5">
+        <ScrollView Grid.Row="1">
             <VerticalStackLayout>
                 <CollectionView
                     x:Name="CollectionView"
@@ -160,6 +159,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <TableView />
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
