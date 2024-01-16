@@ -31,7 +31,7 @@ public class FixFileData
     public string RegisteredPerson { get; set; } = null!;
 
     [DataType(DataType.DateTime)]
-    public DateTime StartFixDate { get; set; }
+    public DateTime StartFixDate { get; set; } = DateTime.Now;
 
     public string? Other { get; set; }
 
@@ -56,7 +56,7 @@ public class FixedFileData
 
 
     [DataType(DataType.DateTime)]
-    public DateTime EndFixDate { get; set; }
+    public DateTime EndFixDate { get; set; }= DateTime.Now;
 
     public string? Other2 { get; set; }
 
