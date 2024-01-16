@@ -5,7 +5,7 @@ namespace TestBoardFixApp.ViewModel;
 public partial class FixViewModel(TestDbContext db):ObservableObject
 {
     [ObservableProperty]
-    private FixFileData fixFile=new();
+    private FixFileData fixFile = new();
 
     [ObservableProperty]
     private ImageSource? image;
