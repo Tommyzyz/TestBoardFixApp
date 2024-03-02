@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks></TargetFrameworks>
+		<TargetFrameworks>net8.0-android34.0</TargetFrameworks>
 		<!-- ;net8.0-android34.0
 		Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
@@ -59,21 +59,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="epj.RouteGenerator" Version="1.0.0-pre2" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+		<PackageReference Include="CommunityToolkit.Maui" />
+		<PackageReference Include="CommunityToolkit.Mvvm" />
+		<PackageReference Include="epj.RouteGenerator" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
-		<PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" />
+		<PackageReference Include="Newtonsoft.Json" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -99,9 +99,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <!--<PackageReference Update="Microsoft.Maui.Controls" Version="8.0.6" />-->
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.6" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.6" />
+	  <!--<PackageReference Update="Microsoft.Maui.Controls" />-->
+		<PackageReference Include="Microsoft.Maui.Controls" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
 	</ItemGroup>
 
 </Project>
